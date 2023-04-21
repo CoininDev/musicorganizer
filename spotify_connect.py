@@ -31,8 +31,19 @@ def get_auth_header(token):
 def search_playlist(token, playlist_name):
     url = "https://api.spotify.com/v1/search"
     headers = get_auth_header(token)
-    query = f"?q={playlist_name}&type=playlist&limit=10&"
+    query = f"?q={playlist_name}&type=playlist&limit=1&"
     query_url = url + query
     result = get(query_url, headers=headers)
     json_result = json.loads(result.content)
-    print(json_result)
+    return json_result
+
+def get_playlist_items(token, playlist_id):
+    url = f"https://api.spotify.com/v1/playlists/{playlist_id}/tracks"
+    headers = get_auth_header(token)
+    query = "?"
+    #TODO
+
+def get_song_genre(token, song_id):
+    #TODO
+    pass
+
